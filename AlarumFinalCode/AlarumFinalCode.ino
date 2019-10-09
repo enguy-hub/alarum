@@ -19,15 +19,15 @@ VL53L0X_RangingMeasurementData_t measure;
 WiFiClient espClient;
 
 // Variables for the Wifi Name and Password as well as the SMTP email server
-const char* ssid = "lans"; // Enter the name of your WiFi Network.
-const char* password = "password";// Enter the Password of your WiFi Network.
+const char* ssid = "Alarum"; // Enter the name of your WiFi Network.
+const char* password = "blingblao";// Enter the Password of your WiFi Network.
 char server[] = "mail.smtp2go.com"; // URL of the SMTP Server 
 
 // Variables for distance sensor
 unsigned long current_distance;
-const unsigned int HIGH_DIST = 170;
-const unsigned int MED_DIST = 300;
-const unsigned int LOW_DIST = 460; // Anything over 460 mm is "out of stock"
+const unsigned int HIGH_DIST = 120;
+const unsigned int MED_DIST = 270;
+const unsigned int LOW_DIST = 440; // Anything over 440 mm is "out of stock"
 
 // Create an enum for state of the rack
 enum state 
@@ -74,8 +74,8 @@ void setup()
 void loop()
 {
   // Enabled this (and disabled the one in "setup" for the infinite loop of distance measuring
-  //measuring();
-  //delay(5000);  
+  measuring();
+  delay(10000);  
 }
 
 
@@ -261,7 +261,7 @@ byte sendEmail()
 
   //
   Serial.println(F("Sending email"));
-  espClient.println(F("To:  nguyehd@mail.uc.edu"));   // Replace with the recipient address
+  espClient.println(F("To:  nguyehd@mail.uc.edu"));   // Replace with the recipient address 
   espClient.println(F("From: alarumproject@gmail.com"));   // Replace with your address
 
   // Content of the sending email
@@ -269,7 +269,7 @@ byte sendEmail()
   espClient.println(F("This email is a notification of the current status of the bottle organizer \r\n"));
 
   // Checking the condition and send email according to that
-  if(rackState <= High_State) // rackState <= High_State current_distance
+  if(rackState <= High_State)
   {   
       //espClient.println(High_State);    
       espClient.println(F(" Current Status of The Bottle Organizer: HIGH on stock "));
@@ -277,7 +277,7 @@ byte sendEmail()
       // Wait at least 60ms before next measurement
       delay(60);
   }  
-  else if (rackState <= Medium_State & rackState > High_State) // rackState <= Medium_State & rackState > High_State
+  else if (rackState <= Medium_State & rackState > High_State)
   {    
       //espClient.println(Medium_State);
       espClient.println(F(" Current Status of The Bottle Organizer: MEDIUM on stock "));     
@@ -285,10 +285,10 @@ byte sendEmail()
       // Wait at least 60ms before next measurement
       delay(60);
   }  
-  else if (rackState <= Low_State & rackState > Medium_State) // rackState <= Low_State & rackState > Medium_State
+  else if (rackState <= Low_State & rackState > Medium_State)
   {
       //espClient.println(Low_State);
-      espClient.println(F(" Current Status of The Bottle Organizer: Low on stock "));
+      espClient.println(F(" Current Status of The Bottle Organizer: LOW on stock "));
     
       // Wait at least 60ms before next measurement
       delay(60);
@@ -296,7 +296,7 @@ byte sendEmail()
   else 
   {    
       //espClient.println(Out_State);
-      espClient.println(F(" Current Status of The Bottle Organizer: Out of stock "));
+      espClient.println(F(" Current Status of The Bottle Organizer: OUT of stock "));
       
       // Wait at least 60ms before next measurement
       delay(60);
