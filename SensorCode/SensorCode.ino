@@ -15,9 +15,9 @@ VL53L0X_RangingMeasurementData_t measure;
 
 // Create some distance variables
 unsigned long current_distance;
-const unsigned int HIGH_DIST = 170;
-const unsigned int MED_DIST = 300;
-const unsigned int LOW_DIST = 470; // Anything over 350 mm is "out of stock"
+const unsigned int HIGH_DIST = 130;
+const unsigned int MED_DIST = 270;
+const unsigned int LOW_DIST = 440; // Anything over 440 mm is "out of stock"
 
 // Create an enum for state of the rack
 enum state 
@@ -59,7 +59,7 @@ void setup()
 void loop() 
 {   
   measuring();
-  delay(1000); 
+  delay(500); 
 }
 
 void measuring()
