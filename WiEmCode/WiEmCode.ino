@@ -2,8 +2,8 @@
 #include <ESP8266WiFi.h>
 
 // Creating variables for the Wifi Name and Password as well as the SMTP email server
-const char* ssid = "lans"; // Enter the name of your WiFi Network.
-const char* password = "password";// Enter the Password of your WiFi Network.
+const char* ssid = "AlarumWifi"; // Enter the name of your WiFi Network.
+const char* password = "Password513";// Enter the Password of your WiFi Network.
 char server[] = "mail.smtp2go.com"; // URL of the SMTP Server 
 
 // Reference "espClient" from the WifiClient library
