@@ -1,4 +1,6 @@
-# alarum - Bachelor's project for Information Technology @ University of Cincinnati
+# alarum
+
+alarum - Bachelor's project for Information Technology @ University of Cincinnati
 
 ![Alarum Hardware/Software](https://github.com/enguy-hub/alarum/blob/master/alarum_poster.png?raw=true)
 
